@@ -1,91 +1,146 @@
+
+
+
+let paper=document.querySelector(".paper")
+let rock=document.querySelector(".rock")
+let scissors=document.querySelector(".scissors")
+let humanChoice;
+let userScore=0;
+let computerScore=0;
+let gameOver=false;
+
+let resultArea=document.querySelector(".result")
+let roundResult=document.createElement("p")
+let totalScore=document.createElement("p")
+let playAgain=document.createElement("button")
+
+roundResult.classList.add("round-result")
+totalScore.classList.add("totalScore")
+playAgain.classList.add("playAgain")
+
 function getComputerChoice(){
+
      let choice=Math.floor(Math.random()*3)+1;
      let computerChoice1;
    
- 
-    if(choice===1){
-        
-computerChoice1="ROCK";
-  console.log("Computer Choice:"+computerChoice1)
+    if(choice===1){   
+   computerChoice1="ROCK";
     }
+
     else if(choice===2){
        computerChoice1="PAPER";
-       console.log("Computer Choice:"+computerChoice1)
     }
+
     else {
        computerChoice1="SCISSORS";
-       console.log("Computer Choice:"+computerChoice1)
-    
 }
+
 return computerChoice1
 }
 
-function getHumanChoice(){
 
-    let choice=prompt("Enter your Choice")
-    let humanChoice=choice.toUpperCase().trim()
-    console.log("Your Choice:"+humanChoice)
+paper.addEventListener("click",()=>{
+   if(!gameOver){  humanChoice="PAPER";
+   playRound(getComputerChoice())
+    }
+
    
- if(  humanChoice .length==0){
-return  null
-}
+})
 
-   return humanChoice;
-}
+rock.addEventListener("click",()=>{
 
-let userScore=0;
-let computerScore=0;
+   if(!gameOver){  humanChoice="ROCK";
+   playRound(getComputerChoice()) }
+ 
 
-function playRound(humanChoice,computerChoice){
+})
 
+scissors.addEventListener("click",()=>{
+   if(!gameOver){
+
+        humanChoice="SCISSORS";
+   playRound(getComputerChoice())
+   }
+  
+})
+
+  playAgain.textContent="PLAY AGAIN"
+
+ playAgain.addEventListener("click",()=>{
+
+       userScore =0
+      computerScore=0
+
+      roundResult.textContent=""
+      totalScore.textContent=""
+     gameOver=false
+   resultArea.textContent=""
+      resultArea.appendChild(roundResult)
+      resultArea.appendChild(totalScore)
+   })
+ 
+
+
+function playRound(  computerChoice){
 
     if(humanChoice===computerChoice){
 
-      
-        console.log(`Draw!\n Your Choice:${humanChoice} ,Computer Choice:${computerChoice}`) }
-
+        roundResult.textContent=`DRAW! Your Choice:${humanChoice} Computer Choice:${computerChoice}` 
+        totalScore.textContent=`YOUR SCORE:${userScore} COMPUTER SCORE:${computerScore}`
+      }
+        
      else if  ( humanChoice==="SCISSORS"  &&  computerChoice==="PAPER" || 
         humanChoice==="PAPER" && computerChoice==="ROCK" || 
         humanChoice==="ROCK" &&  computerChoice==="SCISSORS"  ) 
         {
        
-      console.log(`You WON!Computer LOOSE:!\n Your Choose:${humanChoice}! Computer Chose:${computerChoice}`)
-    userScore++;
+      roundResult.textContent=`YOU WON! Your Choose:${humanChoice}! Computer Chose:${computerChoice}`
+      userScore++;
+      totalScore.textContent=`YOUR SCORE:${userScore} COMPUTER SCORE:${computerScore}`
+
      }
-     else{
-        console.log(`You Loose!Computer Won:!\n Your Choose:${humanChoice}! Computer Chose:${computerChoice}`)
-     computerScore++;
+     else { 
+
+        roundResult.textContent=`COMPUTER WON! Your Choose:${humanChoice}! Computer Chose:${computerChoice}`
+          computerScore++;
+              totalScore.textContent=`YOUR SCORE:${userScore} COMPUTER SCORE:${computerScore}`
      }
-    }
-    
-function playGame(){
 
-  function playGame() {
-  while (userScore < 5 && computerScore < 5) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    if (
-      humanSelection == null ||
-      (humanSelection !== "ROCK" &&
-        humanSelection !== "PAPER" &&
-        humanSelection !== "SCISSORS")
-    ) {
-      continue;
-    }
-
-    playRound(humanSelection, computerSelection);
-    console.log(`Your Score: ${userScore} | Computer Score: ${computerScore}`);
-  }
-
-  if (userScore === 5) {
-    console.log("GAME FINISHED! YOU WON!");
-  } else if (computerScore === 5) {
-    console.log(" GAME FINISHED! COMPUTER WON!");
-  }
-}
+     resultArea.appendChild(roundResult)
+     resultArea.appendChild(totalScore)
 
    
+     roundChecker() 
+
+  
+    }
+
+
+function roundChecker(){
+
+  if (userScore === 5 || computerScore === 5) {
+
+   let winner=userScore===5 ? "YOU WON THE GAME" : "COMPUTER WON THE GAME"
+     
+
+    const finalMessage = document.createElement("p");
+    finalMessage.textContent = `GAME FINISHED! ${winner}`;
+    finalMessage.classList.add("final-message");
+
+   gameOver=true
+   resultArea.appendChild(finalMessage)
+    resultArea.appendChild(roundResult)
+     resultArea.appendChild(totalScore)
+   resultArea.appendChild(playAgain)
+
+   }
+   return;
 }
 
-playGame()
+
+
+   
+
+    
+
+   

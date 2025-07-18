@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+h1{
+    margin-bottom: 150px;
+    font-weight: 900;
+    color: goldenrod;
+    font-size: 50px;
+   
+}
+
+.game-container{
+    height: 500px;
+    width:600px;
+    border: 5px solid goldenrod;
+    border-radius: 10px;;
+    display: flex;
+    flex-direction: column; 
+  
+}
+h3{
+    text-align: center;
+    margin-top: 10px;
+    color: whitesmoke;
+    font-weight: 900;
+    font-size: 40px;
+     padding-top: 10px;
+}
+.userChoice{
+display: flex;
+margin-top: 40px;
+gap: 30px;
+justify-content: center;
+
+}
+button{
+    width: 115px;
+    height: 35px;
+    font-size: 20px;
+    color: whitesmoke;
+    background-color: goldenrod;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-weight: 800;
+}
+button:hover{
+    background-color: green;
+    transition: 0.5 ease-in-out;
+    
+}
+.result{
+    width: 500px;
+    height: 250px;
+   background-color:whitesmoke;
+  border: 4px solid goldenrod;
+  border-radius: 11px;
+ margin: auto;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+  
+}
+.round-result{
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin: 10px 0;
+   background-color: green;
+   border: 4px solid goldenrod;
+   border-radius: 6px;
+   text-align: center;
+   padding: 4px;
+}
+.totalScore{
+    font-size: 20px;
+    font-weight: 600;
+    color: goldenrod;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.playAgain{
+    width: 200px;
+    height: 35px;
+    font-size: 20px;
+    color: whitesmoke;
+    background-color: goldenrod;
+    border: 4px solid green;
+    border-radius: 10px;
+    font-weight: 800;
+    margin-top: 50px;
+}
+.final-message{
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    background-color: goldenrod;
+    border: 3px solid green;
+    border-radius: 6px;
+    width: 90%;
+    text-align: center;
+    padding: 6px;
+}
